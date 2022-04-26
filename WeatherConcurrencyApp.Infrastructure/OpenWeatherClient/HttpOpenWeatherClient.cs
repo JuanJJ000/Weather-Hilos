@@ -41,13 +41,12 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
         }
         public void Extraer()
         {
+            Sys sistema = new Sys();
 
 
-
-
-
-            string jsonString = string.Empty;
-            OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
+            string path = Path.GetFullPath("Cities.json");
+            string jsonString = File.ReadAllText(path);
+            sistema = JsonConvert.DeserializeObject<Sys>(jsonString);
             Console.WriteLine(jsonString);
 
 
