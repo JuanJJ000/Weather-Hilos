@@ -15,7 +15,6 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
     {
         public async Task<OpenWeather> GetWeatherByCityNameAsync(string city)
         {
-
             string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.units}&lang=sp&appid={AppSettings.Token}";
             string jsonObject = string.Empty;
             try
@@ -37,22 +36,13 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
             {
                 throw;
             }
-            
         }
         public void Extraer()
         {
-
-
-
-
-
             string jsonString = string.Empty;
             OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
             Console.WriteLine(jsonString);
-
-
         }
-
     }
 }
 

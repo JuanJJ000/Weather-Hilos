@@ -34,7 +34,6 @@ namespace WeatherConcurrencyApp
                 {
                     throw new NullReferenceException("Fallo al obtener el objeto OpeWeather.");
                 }
-
                 WeatherPanel weatherPanel = new WeatherPanel();
                 flpContent.Controls.Add(weatherPanel);
             }
@@ -42,14 +41,11 @@ namespace WeatherConcurrencyApp
             {
                 throw;
             }
-           
         }
-
         public async Task Request()
         {
            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
         }
-
         private void flpContent_Paint(object sender, PaintEventArgs e)
         {
 
