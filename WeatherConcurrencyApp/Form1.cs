@@ -40,7 +40,7 @@ namespace WeatherConcurrencyApp
             }
             catch (Exception)
             {
-                
+                throw;
             }
            
         }
