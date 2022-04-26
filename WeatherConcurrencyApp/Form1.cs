@@ -23,7 +23,7 @@ namespace WeatherConcurrencyApp
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            cmbCiudades.
+          
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -50,6 +50,9 @@ namespace WeatherConcurrencyApp
            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
         }
 
-        
+        private void flpContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

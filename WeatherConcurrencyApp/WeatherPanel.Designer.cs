@@ -115,11 +115,10 @@ namespace WeatherConcurrencyApp
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblCity;
-        private System.Windows.Forms.Label lblTemperature;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblWeather;
         private System.Windows.Forms.FlowLayoutPanel flpContent;
+        public System.Windows.Forms.Label lblCity;
+        public System.Windows.Forms.Label lblTemperature;
+        public System.Windows.Forms.Label lblWeather;
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using WeatherConcurrencyApp.Common;
 using WeatherConcurrentApp.Domain.Entities;
 using WeatherConcurrentApp.Domain.Interfaces;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
 {
@@ -13,7 +15,7 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
     {
         public async Task<OpenWeather> GetWeatherByCityNameAsync(string city)
         {
-           
+
             string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.units}&lang=sp&appid={AppSettings.Token}";
             string jsonObject = string.Empty;
             try
@@ -21,9 +23,10 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
                 using (HttpClient httpClient = new HttpClient())
                 {
                     jsonObject = await httpClient.GetAsync(url).Result.Content.ReadAsStringAsync();
+                    
                 }
-                   
-                if(string.IsNullOrEmpty(jsonObject))
+                Extraer();
+                if (string.IsNullOrEmpty(jsonObject))
                 {
                     throw new NullReferenceException("El objeto json no puede ser null.");
                 }
@@ -34,7 +37,27 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
             {
                 throw;
             }
-           
+            
         }
+        public void Extraer()
+        {
+
+
+
+
+
+            string jsonString = string.Empty;
+            OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
+            Console.WriteLine(jsonString);
+
+
+        }
+
     }
 }
+
+
+
+
+
+
