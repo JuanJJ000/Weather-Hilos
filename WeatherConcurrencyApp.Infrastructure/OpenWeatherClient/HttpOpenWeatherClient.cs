@@ -15,7 +15,6 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
     {
         public async Task<OpenWeather> GetWeatherByCityNameAsync(string city)
         {
-
             string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.units}&lang=sp&appid={AppSettings.Token}";
             string jsonObject = string.Empty;
             try
@@ -37,29 +36,13 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
             {
                 throw;
             }
-            
         }
         public void Extraer()
         {
-            Sys sistema = new Sys();
-
-
-            string path = Path.GetFullPath("Cities.json");
-
-            if (File.Exists(path) == true)
-            {
-                Console.WriteLine("Si existe");
-            }
-            else
-                Console.WriteLine("No existe");
-            string jsonString = File.ReadAllText(path);
-          
-            sistema = JsonConvert.DeserializeObject<Sys>(jsonString);
-       
-
-
+            string jsonString = string.Empty;
+            OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
+            Console.WriteLine(jsonString);
         }
-
     }
 }
 
