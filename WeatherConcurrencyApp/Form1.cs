@@ -39,7 +39,9 @@ namespace WeatherConcurrencyApp
             }
             catch (Exception)
             {
+
                 MessageBox.Show("Error de Sistema", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
         public async Task Request()

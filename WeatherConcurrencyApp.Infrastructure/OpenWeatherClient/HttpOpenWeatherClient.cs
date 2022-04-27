@@ -39,6 +39,18 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
         }
         public void Extraer()
         {
+            string j = @"\Weather - Hilos\WeatherConcurrencyApp.Infrastructure\Cities.json";
+            string path=Path.GetFullPath("a");
+            //path = string.Join("", path.Split("\Weather-Hilos\WeatherConcurrencyApp\bin\Debug\a"));
+
+            Console.WriteLine(path+j);
+            if (File.Exists(path) == true)
+            {
+                Console.WriteLine("Si existe");
+            }
+            else
+                Console.WriteLine("No existe");
+
             string jsonString = string.Empty;
             OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
             Console.WriteLine(jsonString);
