@@ -45,9 +45,17 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
 
 
             string path = Path.GetFullPath("Cities.json");
+
+            if (File.Exists(path) == true)
+            {
+                Console.WriteLine("Si existe");
+            }
+            else
+                Console.WriteLine("No existe");
             string jsonString = File.ReadAllText(path);
+          
             sistema = JsonConvert.DeserializeObject<Sys>(jsonString);
-            Console.WriteLine(jsonString);
+       
 
 
         }
