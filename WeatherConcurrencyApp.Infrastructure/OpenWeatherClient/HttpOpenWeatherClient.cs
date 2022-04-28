@@ -24,7 +24,7 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
                     jsonObject = await httpClient.GetAsync(url).Result.Content.ReadAsStringAsync();
                     
                 }
-                Extraer();
+           
                 if (string.IsNullOrEmpty(jsonObject))
                 {
                     throw new NullReferenceException("El objeto json no puede ser null.");
@@ -37,23 +37,30 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
                 throw;
             }
         }
-        public void Extraer()
+        public OpenWeather Extraer()
         {
-            string j = @"\Weather - Hilos\WeatherConcurrencyApp.Infrastructure\Cities.json";
-            string path=Path.GetFullPath("a");
-            //path = string.Join("", path.Split("\Weather-Hilos\WeatherConcurrencyApp\bin\Debug\a"));
+            string j = @"\WeatherConcurrencyApp.Infrastructure\Cities.json";
+            string path = Path.GetFullPath("Cities.json").Replace(@"\WeatherConcurrencyApp\bin\Debug\Cities.json", string.Empty) + j;
 
-            Console.WriteLine(path+j);
-            if (File.Exists(path) == true)
+            Console.WriteLine(path);
+            if (File.Exists(path) == false)
             {
-                Console.WriteLine("Si existe");
+                Console.WriteLine("No existe");
+              
             }
             else
-                Console.WriteLine("No existe");
+                Console.WriteLine("Si existe");
 
-            string jsonString = string.Empty;
+            var jsonString = File.ReadAllText(path);
             OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
-            Console.WriteLine(jsonString);
+            Console.WriteLine(openWeather.Sys.City);
+            return openWeather;
+            
+        }
+
+        public object PasarDato(object T)
+        {
+            return T;
         }
     }
 }

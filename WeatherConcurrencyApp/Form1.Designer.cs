@@ -55,13 +55,14 @@ namespace WeatherConcurrencyApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(645, 73);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // cmbCiudades
             // 
             this.cmbCiudades.FormattingEnabled = true;
             this.cmbCiudades.Location = new System.Drawing.Point(48, 21);
             this.cmbCiudades.Name = "cmbCiudades";
-            this.cmbCiudades.Size = new System.Drawing.Size(121, 21);
+            this.cmbCiudades.Size = new System.Drawing.Size(213, 21);
             this.cmbCiudades.TabIndex = 1;
             // 
             // btnOk

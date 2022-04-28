@@ -9,5 +9,8 @@ namespace WeatherConcurrentApp.Domain.Interfaces
     public interface IHttpOpenWeatherClient
     {
        Task<OpenWeather> GetWeatherByCityNameAsync(string city);
+
+         Object PasarDato (object T);
+
     }
 }

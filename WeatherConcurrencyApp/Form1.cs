@@ -16,6 +16,7 @@ namespace WeatherConcurrencyApp
     {
         public HttpOpenWeatherClient httpOpenWeatherClient;
         public OpenWeather openWeather;
+        private string Intermediario;
         public FrmMain()
         {
             httpOpenWeatherClient = new HttpOpenWeatherClient();
@@ -23,14 +24,15 @@ namespace WeatherConcurrencyApp
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-          
+
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
+            a(httpOpenWeatherClient.Extraer());
             try
             {
                 Task.Run(Request).Wait();
-                if(openWeather == null)
+                if (openWeather == null)
                 {
                     throw new NullReferenceException("Fallo al obtener el objeto OpeWeather.");
                 }
@@ -46,9 +48,20 @@ namespace WeatherConcurrencyApp
         }
         public async Task Request()
         {
-           openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
+            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
         }
         private void flpContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void a(OpenWeather T)
+        {
+            Intermediario = T.Sys.City;
+            cmbCiudades.Text = Intermediario;
+        }
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
