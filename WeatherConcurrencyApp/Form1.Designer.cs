@@ -44,7 +44,6 @@ namespace WeatherConcurrencyApp
             this.flpContent.Name = "flpContent";
             this.flpContent.Size = new System.Drawing.Size(645, 428);
             this.flpContent.TabIndex = 0;
-            this.flpContent.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContent_Paint);
             // 
             // panel1
             // 
@@ -55,7 +54,6 @@ namespace WeatherConcurrencyApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(645, 73);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // cmbCiudades
             // 
@@ -95,7 +93,7 @@ namespace WeatherConcurrencyApp
         private System.Windows.Forms.FlowLayoutPanel flpContent;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.ComboBox cmbCiudades;
+        public System.Windows.Forms.ComboBox cmbCiudades;
     }
 }
 

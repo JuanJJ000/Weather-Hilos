@@ -17,51 +17,69 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
         {
             string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.units}&lang=sp&appid={AppSettings.Token}";
             string jsonObject = string.Empty;
-            try
-            {
+          
                 using (HttpClient httpClient = new HttpClient())
                 {
                     jsonObject = await httpClient.GetAsync(url).Result.Content.ReadAsStringAsync();
                     
                 }
-           
+            
                 if (string.IsNullOrEmpty(jsonObject))
                 {
                     throw new NullReferenceException("El objeto json no puede ser null.");
                 }
 
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<OpenWeather>(jsonObject);
-            }
-            catch (Exception)
+                return JsonConvert.DeserializeObject<OpenWeather>(jsonObject);
+            
+            
+        }
+      
+
+        public DateTime En_tiempo(long g)
+        {
             {
-                throw;
+                DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
+                day = day.AddSeconds(g).ToLocalTime();
+
+                return day;
             }
         }
-        public OpenWeather Extraer()
+
+        public List<OpenWeather> GetCityNames()
         {
+
             string j = @"\WeatherConcurrencyApp.Infrastructure\Cities.json";
             string path = Path.GetFullPath("Cities.json").Replace(@"\WeatherConcurrencyApp\bin\Debug\Cities.json", string.Empty) + j;
 
-            Console.WriteLine(path);
+
             if (File.Exists(path) == false)
             {
                 Console.WriteLine("No existe");
-              
+
+
+
             }
             else
                 Console.WriteLine("Si existe");
-
             var jsonString = File.ReadAllText(path);
-            OpenWeather openWeather = JsonConvert.DeserializeObject<OpenWeather>(jsonString);
-            Console.WriteLine(openWeather.Sys.City);
-            return openWeather;
-            
+            List<OpenWeather> openWeathers = JsonConvert.DeserializeObject<List<OpenWeather>>(jsonString);
+
+
+
+            return openWeathers;
         }
 
-        public object PasarDato(object T)
+        public OpenWeather GetWeatherByCity(OpenWeather openWeather)
         {
-            return T;
+
+
+
+            return openWeather;
+
         }
+
+
+
     }
 }
 

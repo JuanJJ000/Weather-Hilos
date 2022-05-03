@@ -16,5 +16,11 @@ namespace WeatherConcurrencyApp
         {
             InitializeComponent();
         }
+
+        private void WeatherPanel_Load(object sender, EventArgs e)
+        {
+            DetailsWeather detailsWeather = new DetailsWeather();
+            flpContent.Controls.Add(detailsWeather);
+        }
     }
 }

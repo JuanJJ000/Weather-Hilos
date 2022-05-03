@@ -108,6 +108,7 @@ namespace WeatherConcurrencyApp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WeatherPanel";
             this.Size = new System.Drawing.Size(319, 551);
+            this.Load += new System.EventHandler(this.WeatherPanel_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

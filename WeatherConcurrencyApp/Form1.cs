@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherConcurrencyApp.Infrastructure.OpenWeatherClient;
 using WeatherConcurrentApp.Domain.Entities;
+using Newtonsoft.Json;
 
 namespace WeatherConcurrencyApp
 {
@@ -16,7 +17,7 @@ namespace WeatherConcurrencyApp
     {
         public HttpOpenWeatherClient httpOpenWeatherClient;
         public OpenWeather openWeather;
-        private string Intermediario;
+        string city= string.Empty;
         public FrmMain()
         {
             httpOpenWeatherClient = new HttpOpenWeatherClient();
@@ -24,11 +25,20 @@ namespace WeatherConcurrencyApp
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            a(httpOpenWeatherClient.GetCityNames());
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
-            a(httpOpenWeatherClient.Extraer());
+         city = cmbCiudades.Text;
+
+            if (cmbCiudades.Text == string.Empty || cmbCiudades == null)
+            {
+                MessageBox.Show("Por favor escoga una ciudad");
+                return;
+
+            }
+
+
             try
             {
                 Task.Run(Request).Wait();
@@ -36,8 +46,14 @@ namespace WeatherConcurrencyApp
                 {
                     throw new NullReferenceException("Fallo al obtener el objeto OpeWeather.");
                 }
-                WeatherPanel weatherPanel = new WeatherPanel();
-                flpContent.Controls.Add(weatherPanel);
+                Nulls();
+                 if(openWeather.Name == null)
+                {
+                    MessageBox.Show("No se encontro la ciudad o no es válida");
+                }
+
+
+               
             }
             catch (Exception)
             {
@@ -48,22 +64,35 @@ namespace WeatherConcurrencyApp
         }
         public async Task Request()
         {
-            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
+
+            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(city);
+        
         }
-        private void flpContent_Paint(object sender, PaintEventArgs e)
+       
+        private void a(List<OpenWeather> T)
+        {
+            T = httpOpenWeatherClient.GetCityNames();
+           
+            for(int i =0; i< T.Count;i++)
+            {
+                cmbCiudades.Items.Add(T[i].Name);
+            }
+            
+            
+        }
+
+        private void Nulls()
         {
 
-        }
-        private void a(OpenWeather T)
-        {
-            Intermediario = T.Sys.City;
-            cmbCiudades.Text = Intermediario;
-        }
+            WeatherPanel weatherPanel = new WeatherPanel();
+            weatherPanel.lblCity.Text = city;
+            weatherPanel.lblTemperature.Text = "C° "+openWeather.Main.Temp.ToString();
+            weatherPanel.lblWeather.Text = openWeather.Weather[0].Main;
+            flpContent.Controls.Add(weatherPanel);
+           
 
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
+
     }
 }

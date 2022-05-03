@@ -10,7 +10,9 @@ namespace WeatherConcurrentApp.Domain.Interfaces
     {
        Task<OpenWeather> GetWeatherByCityNameAsync(string city);
 
-         Object PasarDato (object T);
+        List<OpenWeather> GetCityNames();
+
+        OpenWeather GetWeatherByCity(OpenWeather open);
 
     }
 }
