@@ -34,7 +34,9 @@ namespace WeatherConcurrencyApp
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblWeather = new System.Windows.Forms.Label();
             this.flpContent = new System.Windows.Forms.FlowLayoutPanel();
+            this.pctbxClima = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbxClima)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCity
@@ -44,7 +46,7 @@ namespace WeatherConcurrencyApp
             this.lblCity.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.Location = new System.Drawing.Point(3, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(313, 59);
+            this.lblCity.Size = new System.Drawing.Size(705, 59);
             this.lblCity.TabIndex = 0;
             this.lblCity.Text = "City";
             this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,7 +58,7 @@ namespace WeatherConcurrencyApp
             this.lblTemperature.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTemperature.Location = new System.Drawing.Point(3, 59);
             this.lblTemperature.Name = "lblTemperature";
-            this.lblTemperature.Size = new System.Drawing.Size(313, 59);
+            this.lblTemperature.Size = new System.Drawing.Size(705, 59);
             this.lblTemperature.TabIndex = 1;
             this.lblTemperature.Text = "30";
             this.lblTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -77,7 +79,7 @@ namespace WeatherConcurrencyApp
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(319, 138);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(711, 138);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // lblWeather
@@ -87,39 +89,52 @@ namespace WeatherConcurrencyApp
             this.lblWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWeather.Location = new System.Drawing.Point(3, 118);
             this.lblWeather.Name = "lblWeather";
-            this.lblWeather.Size = new System.Drawing.Size(313, 20);
+            this.lblWeather.Size = new System.Drawing.Size(705, 20);
             this.lblWeather.TabIndex = 2;
             this.lblWeather.Text = "lblWeather";
             this.lblWeather.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flpContent
             // 
+            this.flpContent.BackColor = System.Drawing.Color.Transparent;
             this.flpContent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpContent.Location = new System.Drawing.Point(0, 144);
+            this.flpContent.Location = new System.Drawing.Point(0, 199);
             this.flpContent.Name = "flpContent";
-            this.flpContent.Size = new System.Drawing.Size(319, 407);
+            this.flpContent.Size = new System.Drawing.Size(711, 352);
             this.flpContent.TabIndex = 3;
+            // 
+            // pctbxClima
+            // 
+            this.pctbxClima.Location = new System.Drawing.Point(298, 141);
+            this.pctbxClima.Name = "pctbxClima";
+            this.pctbxClima.Size = new System.Drawing.Size(100, 50);
+            this.pctbxClima.TabIndex = 4;
+            this.pctbxClima.TabStop = false;
             // 
             // WeatherPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.pctbxClima);
             this.Controls.Add(this.flpContent);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WeatherPanel";
-            this.Size = new System.Drawing.Size(319, 551);
+            this.Size = new System.Drawing.Size(711, 551);
             this.Load += new System.EventHandler(this.WeatherPanel_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbxClima)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flpContent;
         public System.Windows.Forms.Label lblCity;
         public System.Windows.Forms.Label lblTemperature;
         public System.Windows.Forms.Label lblWeather;
+        public System.Windows.Forms.FlowLayoutPanel flpContent;
+        public System.Windows.Forms.PictureBox pctbxClima;
     }
 }

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using WeatherConcurrencyApp.Infrastructure.OpenWeatherClient;
 using WeatherConcurrentApp.Domain.Entities;
 using Newtonsoft.Json;
+using WeatherConcurrentApp.Domain.Interfaces;
 
 namespace WeatherConcurrencyApp
 {
     public partial class FrmMain : Form
     {
+       
         public HttpOpenWeatherClient httpOpenWeatherClient;
         public OpenWeather openWeather;
         string city= string.Empty;
@@ -46,14 +48,12 @@ namespace WeatherConcurrencyApp
                 {
                     throw new NullReferenceException("Fallo al obtener el objeto OpeWeather.");
                 }
-                Nulls();
+                Paneles();
                  if(openWeather.Name == null)
                 {
                     MessageBox.Show("No se encontro la ciudad o no es válida");
                 }
 
-
-               
             }
             catch (Exception)
             {
@@ -81,13 +81,13 @@ namespace WeatherConcurrencyApp
             
         }
 
-        private void Nulls()
+        private void Paneles()
         {
 
             WeatherPanel weatherPanel = new WeatherPanel();
+
             weatherPanel.lblCity.Text = city;
-            weatherPanel.lblTemperature.Text = "C° "+openWeather.Main.Temp.ToString();
-            weatherPanel.lblWeather.Text = openWeather.Weather[0].Main;
+            weatherPanel.Paneles(openWeather);
             flpContent.Controls.Add(weatherPanel);
            
 

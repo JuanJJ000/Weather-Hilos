@@ -22,7 +22,6 @@ namespace WeatherConcurrentApp.Domain.Entities
     {
         public double Speed { get; set; }
         public int Deg { get; set; }
-        public double Gust { get; set; }
     }
 
     public class Weather
@@ -45,8 +44,7 @@ namespace WeatherConcurrentApp.Domain.Entities
         public double Temp { get; set; }
         public int Pressure { get; set; }
         public int Humidity { get; set; }
-        public int Sea_level { get; set; }
-        public int Grnd_level { get; set; }
+
     }
 
     public class Coord

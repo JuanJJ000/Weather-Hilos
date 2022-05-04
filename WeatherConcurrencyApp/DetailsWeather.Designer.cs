@@ -56,10 +56,11 @@ namespace WeatherConcurrencyApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.lblDetailValue);
             this.Controls.Add(this.lblDetail);
             this.Name = "DetailsWeather";
-            this.Size = new System.Drawing.Size(106, 74);
+            this.Size = new System.Drawing.Size(125, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,7 +68,7 @@ namespace WeatherConcurrencyApp
 
         #endregion
 
-        private System.Windows.Forms.Label lblDetail;
-        private System.Windows.Forms.Label lblDetailValue;
+        public System.Windows.Forms.Label lblDetail;
+        public System.Windows.Forms.Label lblDetailValue;
     }
 }
